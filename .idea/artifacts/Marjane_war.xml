@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Marjane:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>Marjane</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="Marjane-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="Marjane:war exploded" />
+    </root>
+  </artifact>
+</component>
