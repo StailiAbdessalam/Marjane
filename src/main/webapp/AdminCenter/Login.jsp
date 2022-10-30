@@ -7,6 +7,7 @@
 </head>
 <body class="h-full">
 <div class="min-h-full flex">
+  <jsp:include page="../Components/Header.jsp"/>
   <div class="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
     <div class="mx-auto w-full max-w-sm lg:w-96">
       <div>
@@ -16,7 +17,7 @@
 
       <div class="mt-8">
         <div class="mt-6">
-          <form action="login-admin" method="POST" class="space-y-6">
+          <form action="adminLogin" method="POST" class="space-y-6">
             <div>
               <label for="email" class="block text-sm font-medium text-gray-700"> Email address </label>
               <div class="mt-1">

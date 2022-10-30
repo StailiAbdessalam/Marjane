@@ -17,7 +17,6 @@ public abstract class AbstractHibernateDao<T extends Serializable> {
         this.clazz = clazzToSet;
     }
 
-    //find one by id using entity manager
     public T findOne(long id) {
         return jpaService.runInTransaction(entityManager -> {
             return entityManager.find(clazz, id);

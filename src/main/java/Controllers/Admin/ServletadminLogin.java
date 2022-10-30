@@ -17,15 +17,15 @@ public class ServletadminLogin extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession(false);
-        if(session != null){
-            Object check = session.getAttribute("admin");
-            if(check != null){
-                request.getRequestDispatcher("/views/admin/dashboard.jsp").forward(request,response);
-                return;
-            }
-        }
-        request.getRequestDispatcher("/views/admin/login.jsp").forward(request,response);
+       // HttpSession session = request.getSession(false);
+       // if(session != null){
+//            Object check = session.getAttribute("admin");
+//            if(check != null){
+//                request.getRequestDispatcher("./AdminGlobal/Dashbord_adminGlobal.jsp").forward(request,response);
+//                return;
+//            }
+//        }
+        request.getRequestDispatcher("./AdminGlobal/Login.jsp").forward(request,response);
     }
 
     @Override
@@ -36,7 +36,7 @@ public class ServletadminLogin extends HttpServlet {
         if(login){
             HttpSession session = request.getSession();
             session.setAttribute("admin", email);
-            response.sendRedirect("/Dashbord_adminGlobal");
+            response.sendRedirect("./AdminGlobal/Dashbord_adminGlobal.jsp");
         }else{
             request.setAttribute("echo","you information is incorrect");
             request.getRequestDispatcher("./AdminGlobal/Login.jsp").forward(request, response);
