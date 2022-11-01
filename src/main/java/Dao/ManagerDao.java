@@ -12,6 +12,8 @@ public class ManagerDao extends AbstractHibernateDao<Manager> {
         setClazz(Manager.class);
     }
 
+
+
     // find all manager
     public List getAllRespRayons() {
         return findAll();
