@@ -40,7 +40,7 @@ public class ServletAdminManagerList extends HttpServlet {
         String hashpassword = Password.hashPassword(password);
         String fullname = request.getParameter("fullName");
         int idcenter = Integer.parseInt(request.getParameter("idcategorie"));
-        // add manager
+
         Manager adminCenter = new Manager();
 
         managerDao.createRespRayon(adminCenter);

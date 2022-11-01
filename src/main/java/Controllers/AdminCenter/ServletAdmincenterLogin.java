@@ -38,7 +38,9 @@ public class ServletAdmincenterLogin extends HttpServlet {
         if(login!=null){
             HttpSession session = request.getSession();
             session.setAttribute("admin", email);
+            request.setAttribute("idcenteradmin",login);
             response.sendRedirect("AdminManagerList");
+
         }else{
             request.setAttribute("echo","you information is incorrect");
             request.getRequestDispatcher("./AdminGlobaLogin.jsp").forward(request, response);
