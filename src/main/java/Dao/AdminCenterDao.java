@@ -65,6 +65,9 @@ public class AdminCenterDao extends AbstractHibernateDao<Centreadmin> {
         });
 
     }
+    public Centreadmin getadmincenterbyid(long id) {
+        return findOne(id);
+    }
     public void addadminCenter(Centreadmin centreadmin){
         create(centreadmin);
     }

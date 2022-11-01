@@ -1,8 +1,9 @@
 package Controllers.AdminCenter;
 
+import Dao.AdminCenterDao;
 import Dao.CategorieDao;
-import Dao.CenterDao;
 import Dao.ManagerDao;
+import Models.Categorie;
 import Models.Centreadmin;
 import Models.Manager;
 import Utuls.Password;
@@ -11,6 +12,7 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
+import java.time.Instant;
 import java.util.List;
 
 @WebServlet(name = "ServletAdminManagerList", value = "/AdminManagerList")
@@ -39,9 +41,12 @@ public class ServletAdminManagerList extends HttpServlet {
         String password = request.getParameter("password");
         String hashpassword = Password.hashPassword(password);
         String fullname = request.getParameter("fullName");
-        int idcenter = Integer.parseInt(request.getParameter("idcategorie"));
-
-        Manager adminCenter = new Manager();
+        int idcategorie = Integer.parseInt(request.getParameter("idcategorie"));
+        int idcenterAdmin = Integer.parseInt(request.getParameter("idcenter"));
+        AdminCenterDao adminCenterDao = new AdminCenterDao();
+        Centreadmin centreadmin = adminCenterDao.getadmincenterbyid(idcenterAdmin);
+        Categorie categorie = new CategorieDao().getCategoryById(idcategorie);
+        Manager adminCenter = new Manager(centreadmin,fullname,email,hashpassword, Instant.now(),categorie);
 
         managerDao.createRespRayon(adminCenter);
         CategorieDao categorieDao = new CategorieDao();
