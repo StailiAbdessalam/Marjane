@@ -1,8 +1,11 @@
 package Dao;
 
+import Models.Center;
 import Utuls.JpaService;
+import jakarta.persistence.EntityManager;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,13 +32,13 @@ public abstract class AbstractHibernateDao<T extends Serializable> {
         });
     }
 
+
     public void create(T entity) {
         jpaService.runInTransaction(entityManager -> {
             entityManager.persist(entity);
             return null;
         });
     }
-
     public T update(T entity) {
         return jpaService.runInTransaction(entityManager -> {
             return entityManager.merge(entity);
@@ -61,6 +64,7 @@ public abstract class AbstractHibernateDao<T extends Serializable> {
             return entityManager.contains(entity);
         });
     }
+
 
     // function that take object of email and password and check by query if the email and password are in the database
 //        public boolean validateLogin(Object[] login) {
