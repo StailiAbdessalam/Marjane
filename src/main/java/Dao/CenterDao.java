@@ -1,5 +1,7 @@
 package Dao;
 import Models.Center;
+
+import java.util.ArrayList;
 import java.util.List;
 public class CenterDao extends AbstractHibernateDao<Center> {
 
@@ -11,10 +13,15 @@ public class CenterDao extends AbstractHibernateDao<Center> {
     public List getAllCenters() {
         return findAll();
     }
-
+    public List getAllCenterDisponible()  {
+        return jpaService.runInTransaction(entityManager -> {
+            return   entityManager.createQuery("SELECT c FROM Center c WHERE c.id NOT IN (SELECT a.idcenter FROM Centreadmin a)", Center.class).getResultList();
+        });
+    }
     public Center getCenterById(long id) {
         return findOne(id);
     }
+
 
     public Center getpromotionByName(String name) {
         return jpaService.runInTransaction(entityManager -> {
@@ -24,11 +31,11 @@ public class CenterDao extends AbstractHibernateDao<Center> {
         });
     }
 
-    public void createPromotion(Center category) {
+    public void createCeter(Center category) {
         create(category);
     }
 
-    public void deletePromotion(Center category) {
+    public void deleteCenter(Center category) {
         delete(category);
     }
 

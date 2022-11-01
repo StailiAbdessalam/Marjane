@@ -27,5 +27,4 @@ public class Categorie implements Serializable {
         this.tcreatedat = tcreatedat;
     }
 
-
 }

@@ -45,7 +45,7 @@ public class AdminCenterDao extends AbstractHibernateDao<Centreadmin> {
             return null;
         }
     }
-    public List getAlladminGenerals() {
+    public  List getAlladminCenter() {
         return findAll();
     }
 

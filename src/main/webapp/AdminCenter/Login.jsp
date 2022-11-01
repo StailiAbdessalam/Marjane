@@ -12,12 +12,12 @@
     <div class="mx-auto w-full max-w-sm lg:w-96">
       <div>
         <img class="h-28 w-28" src="../assets/logo.png" alt="logo">
-        <h2 class="mt-6 text-3xl font-extrabold text-gray-900">Sign in  Manager </h2>
+        <h2 class="mt-6 text-3xl font-extrabold text-gray-900">Sign in  Admin Center </h2>
       </div>
 
       <div class="mt-8">
         <div class="mt-6">
-          <form action="adminLogin" method="POST" class="space-y-6">
+          <form action="admincenterLogin" method="POST" class="space-y-6">
             <div>
               <label for="email" class="block text-sm font-medium text-gray-700"> Email address </label>
               <div class="mt-1">

@@ -1,5 +1,7 @@
 package Dao;
 import Models.Categorie;
+import Models.Center;
+
 import java.util.List;
 public class CategorieDao extends AbstractHibernateDao<Categorie> {
 
@@ -11,6 +13,11 @@ public class CategorieDao extends AbstractHibernateDao<Categorie> {
     // find all categories
     public List getAllCategories() {
         return findAll();
+    }
+    public List getAllCategorieDisponible()  {
+        return jpaService.runInTransaction(entityManager -> {
+            return   entityManager.createQuery("SELECT c FROM Categorie c WHERE c.id NOT IN (SELECT a.midcategorie FROM Manager a)", Center.class).getResultList();
+        });
     }
 
     // find one category by id
