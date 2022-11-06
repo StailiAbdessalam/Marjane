@@ -32,6 +32,7 @@ public class ServletAdminManagerList extends HttpServlet {
         List allcategorie = categorieDao.getAllCategorieDisponible();
         request.setAttribute("AllManager", AllManager);
         request.setAttribute("Allcategorie", allcategorie);
+        request.setAttribute("idcenteradmin",request.getAttribute("idcenteradmin"));
         request.getRequestDispatcher("./AdminCenter/AdminManagerList.jsp").forward(request, response);
     }
 
@@ -56,4 +57,13 @@ public class ServletAdminManagerList extends HttpServlet {
         request.setAttribute("Allcategorie", allcategorie);
         request.getRequestDispatcher("./AdminCenter/AdminManagerList.jsp").forward(request, response);
     }
-}
+
+    @Override
+    protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("rest", request.getAttribute("idmanager"));
+        request.getRequestDispatcher("./AdminCenter/AdminManagerList.jsp").forward(request, response);
+    }
+
+
+
+    }
