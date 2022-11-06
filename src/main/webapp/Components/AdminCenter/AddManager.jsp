@@ -17,12 +17,9 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-<% List<Categorie> Allcategorie =(List<Categorie>) request.getAttribute("Allcategorie") ;
+<% List<Categorie> Allcategorie =(List<Categorie>) request.getAttribute("Allcategorie") ;%>
 
-  Integer idcenter = (Integer) request.getAttribute("idcenteradmin");
-
-
-        %>
+<% Integer idcenter = (Integer) session.getAttribute("idcenteradmin");%>
 
 <%--<c:out value="hhe"/>--%>
 
@@ -33,8 +30,8 @@
       <input type="text" id="full name" name="fullName" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="abdesssalam staili" required="">
     </div>
     <div>
-      <label for="city" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Select an option</label>
-      <select id="city" name="idcategorie" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+      <label for="categorie" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Select an option</label>
+      <select id="categorie" name="idcategorie" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
         <c:forEach items="${Allcategorie}" var="categorie">
         <option value="${categorie.getId()}"><c:out value="${categorie.getTname()}"/></option>
         </c:forEach>

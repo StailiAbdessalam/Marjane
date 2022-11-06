@@ -14,7 +14,7 @@
 <body>
 <jsp:include page="../Components/Admin/Header_Admin.jsp"/>
 <div class="mt-[80px]">
-<jsp:include page="../Components/Admin/TablePromotion.jsp"/>
+<jsp:include page="../Components/Admin/Table.jsp"/>
 </div>
 </body>
 </html>
