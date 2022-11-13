@@ -12,6 +12,7 @@ import java.time.Instant;
 @NoArgsConstructor @Data
 public class Categorie implements Serializable {
     @Id
+    @Access(AccessType.PROPERTY)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "tid", nullable = false)
     private Integer id;
@@ -26,5 +27,6 @@ public class Categorie implements Serializable {
         this.tname = tname;
         this.tcreatedat = tcreatedat;
     }
+
 
 }

@@ -143,7 +143,7 @@ public class Menus {
         PromotionDao Promotiondao = new PromotionDao();
         AdminCenterDao adminCenterDao = new AdminCenterDao();
         Categorie categorie = Categorie();
-        Promotion promotionobject = new Promotion(adminCenterDao.getadminGeneralById(id),categorie,pionts,false,Instant.now());
+        Promotion promotionobject = new Promotion();
         return promotionobject;
     }
 }

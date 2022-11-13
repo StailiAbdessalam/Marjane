@@ -44,7 +44,6 @@ public class AdminGeneralDao extends AbstractHibernateDao<Admingeneral> {
         String email = (String) login[0];
         String password = (String) login[1];
         Admingeneral admin = getAdminByEmail(email);
-
         assert admin != null;
         if(admin != null) {
             if (checkPassword(password, admin.getAgpassword())) {

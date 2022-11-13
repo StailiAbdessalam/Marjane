@@ -1,6 +1,6 @@
 package Dao;
-import Models.Promotion;
 
+import Models.Promotion;
 import java.util.List;
 public class PromotionDao extends AbstractHibernateDao<Promotion> {
 
@@ -25,6 +25,7 @@ public class PromotionDao extends AbstractHibernateDao<Promotion> {
     public void deleteCategory(Promotion promotion) {
         delete(promotion);
     }
+
 
 }
 

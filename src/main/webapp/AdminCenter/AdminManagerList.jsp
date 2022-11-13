@@ -22,17 +22,12 @@
     <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" data-modal-toggle="add_manager">
         Add Manager
     </button>
-
-
-
-
     <c:set var = "size" scope = "session" value = "${Allcategorie.size()}"/>
     <c:if test = "${size > 0}">
         <div id="add_manager" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full">
             <jsp:include page="../Components/AdminCenter/AddManager.jsp" />
         </div>
     </c:if>
-
     <c:if test = "${size == 0}">
         <div id="add_manager" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 md:inset-0 h-modal md:h-full">
             <div class="relative p-4 w-full max-w-md h-full md:h-auto">

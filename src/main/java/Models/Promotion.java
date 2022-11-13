@@ -13,6 +13,7 @@ import java.time.Instant;
 @NoArgsConstructor
 public class Promotion implements Serializable {
     @Id
+    @Access(AccessType.PROPERTY)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "p_id", nullable = false)
     private Integer id;

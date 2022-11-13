@@ -38,7 +38,7 @@ public class ServletAdmincenterLogin extends HttpServlet {
         if(login!=null){
             HttpSession session = request.getSession();
             session.setAttribute("admin", email);
-            request.setAttribute("idcenteradmin",login);
+            session.setAttribute("idcenteradmin",login);
             response.sendRedirect("AdminManagerList");
 
         }else{
