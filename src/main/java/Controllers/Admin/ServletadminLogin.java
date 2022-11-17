@@ -1,10 +1,8 @@
 package Controllers.Admin;
-
 import Dao.AdminGeneralDao;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
-
 import java.io.IOException;
 
 @WebServlet(name = "adminLogin", value = "/adminLogin")
@@ -14,7 +12,6 @@ public class ServletadminLogin extends HttpServlet {
     public void init() throws ServletException {
         adminDao = new AdminGeneralDao();
     }
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(false);
@@ -35,6 +32,7 @@ public class ServletadminLogin extends HttpServlet {
         boolean login = adminDao.validateAdminLogin(new String[]{email, password});
         if(login){
             HttpSession session = request.getSession();
+        //set email of admin to use in another class
             session.setAttribute("admin", email);
             response.sendRedirect("AdminCenterList");
         }else{
