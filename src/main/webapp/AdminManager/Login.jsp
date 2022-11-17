@@ -6,17 +6,18 @@
   <script defer src="https://unpkg.com/alpinejs@3.10.4/dist/cdn.min.js"></script>
 </head>
 <body class="h-full">
+<jsp:include page="../Components/Header.jsp"/>
 <div class="min-h-full flex">
   <div class="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
     <div class="mx-auto w-full max-w-sm lg:w-96">
       <div>
-        <img class="h-28 w-28" src="../assets/logo.png" alt="logo">
+<%--        <img class="h-28 w-28" src="../assets/logo.png" alt="logo">--%>
         <h2 class="mt-6 text-3xl font-extrabold text-gray-900">Sign in  Manager </h2>
       </div>
 
       <div class="mt-8">
         <div class="mt-6">
-          <form action="login-admin" method="POST" class="space-y-6">
+          <form action="managerLogin" method="POST" class="space-y-6">
             <div>
               <label for="email" class="block text-sm font-medium text-gray-700"> Email address </label>
               <div class="mt-1">
@@ -53,8 +54,8 @@
       </div>
     </div>
   </div>
-  <div class="hidden lg:block relative w-0 flex-1">
-    <img class="absolute inset-0 h-full w-full object-cover" src="../assets/image_back_login.jpg" alt="photo marjane">
+  <div class="hidden lg:block relative w-0 flex-1 mt-[80px]">
+    <img class="absolute inset-0 h-full w-full object-cover" src="https://play-lh.googleusercontent.com/tz1ySx3X4GXk-erElWv-lEeRBmPa68BwEFlffRNhWjPceC2TrfGXAoIHIsLpM_qZDO0" alt="photo marjane">
   </div>
 </div>
 </body>

@@ -11,7 +11,7 @@
     <div class="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
         <div class="mx-auto w-full max-w-sm lg:w-96">
             <div>
-                <img class="h-28 w-28" src="../assets/logo.png" alt="logo">
+<%--                <img class="h-28 w-28" src="../assets/logo.png" alt="logo">--%>
                 <h2 class="mt-6 text-3xl font-extrabold text-gray-900">Sign in  Admin Global </h2>
             </div>
 
@@ -54,8 +54,8 @@
             </div>
         </div>
     </div>
-    <div class="hidden lg:block relative w-0 flex-1">
-        <img class="absolute inset-0 h-full w-full object-cover" src="../assets/image_back_login.jpg" alt="photo marjane">
+    <div class="hidden lg:block relative w-0 flex-1 mt-[80px]">
+        <img class="absolute inset-0 h-full w-full object-cover" src="https://play-lh.googleusercontent.com/tz1ySx3X4GXk-erElWv-lEeRBmPa68BwEFlffRNhWjPceC2TrfGXAoIHIsLpM_qZDO0" alt="photo marjane">
     </div>
 </div>
 </body>
