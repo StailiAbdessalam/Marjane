@@ -10,6 +10,7 @@ import Utuls.Password;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
+import org.hibernate.Session;
 
 import java.io.IOException;
 import java.time.Instant;
@@ -27,35 +28,40 @@ public class ServletAdminManagerList extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List AllManager = managerDao.getAllRespRayons();
-        CategorieDao categorieDao = new CategorieDao();
-        List allcategorie = categorieDao.getAllCategorieDisponible();
-        request.setAttribute("AllManager", AllManager);
-        request.setAttribute("Allcategorie", allcategorie);
-        request.setAttribute("idcenteradmin",request.getAttribute("idcenteradmin"));
-        request.getRequestDispatcher("./AdminCenter/AdminManagerList.jsp").forward(request, response);
+
+        HttpSession session = request.getSession();
+        if(session.getAttribute("idcenteradmin")!=null) {
+            List AllManager = managerDao.getAllRespRayons();
+            CategorieDao categorieDao = new CategorieDao();
+            List allcategorie = categorieDao.getAllCategorieDisponible();
+            request.setAttribute("AllManager", AllManager);
+            request.setAttribute("Allcategorie", allcategorie);
+            request.setAttribute("idcenteradmin", request.getAttribute("idcenteradmin"));
+            request.getRequestDispatcher("./AdminCenter/AdminManagerList.jsp").forward(request, response);
+        }else {
+            response.sendRedirect("login");
+        }
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        String hashpassword = Password.hashPassword(password);
-        String fullname = request.getParameter("fullName");
-        int idcategorie = Integer.parseInt(request.getParameter("idcategorie"));
-        int idcenterAdmin = Integer.parseInt(request.getParameter("idcenter"));
-        AdminCenterDao adminCenterDao = new AdminCenterDao();
-        Centreadmin centreadmin = adminCenterDao.getadmincenterbyid(idcenterAdmin);
-        Categorie categorie = new CategorieDao().getCategoryById(idcategorie);
-        Manager adminCenter = new Manager(centreadmin,fullname,email,hashpassword, Instant.now(),categorie);
-
-        managerDao.createRespRayon(adminCenter);
-        CategorieDao categorieDao = new CategorieDao();
-        List AllManager = managerDao.getAllRespRayons();
-        List allcategorie = categorieDao.getAllCategorieDisponible();
-        request.setAttribute("AllManager", AllManager);
-        request.setAttribute("Allcategorie", allcategorie);
-        request.getRequestDispatcher("./AdminCenter/AdminManagerList.jsp").forward(request, response);
+        HttpSession session = request.getSession();
+        if(session.getAttribute("idcenteradmin")!=null) {
+            String email = request.getParameter("email");
+            String password = request.getParameter("password");
+            String hashpassword = Password.hashPassword(password);
+            String fullname = request.getParameter("fullName");
+            int idcategorie = Integer.parseInt(request.getParameter("idcategorie"));
+            int idcenterAdmin = Integer.parseInt(request.getParameter("idcenter"));
+            AdminCenterDao adminCenterDao = new AdminCenterDao();
+            Centreadmin centreadmin = adminCenterDao.getadmincenterbyid(idcenterAdmin);
+            Categorie categorie = new CategorieDao().getCategoryById(idcategorie);
+            Manager adminCenter = new Manager(centreadmin,fullname,email,hashpassword, Instant.now(),categorie);
+            managerDao.createRespRayon(adminCenter);
+            response.sendRedirect("AdminManagerList");
+        }else {
+            response.sendRedirect("login");
+        }
     }
 
     @Override
