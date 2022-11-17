@@ -10,13 +10,8 @@
 --%>
 <%--<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-  <title>Title</title>
-  <%@ taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body>
+<%@ taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <% List<Categorie> Allcategorie =(List<Categorie>) request.getAttribute("Allcategorie") ;%>
 
 <% Integer idcenter = (Integer) session.getAttribute("idcenteradmin");%>
@@ -57,5 +52,3 @@
   <button data-modal-toggle="add_manager" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No, cancel</button>
 </form>
 
-</body>
-</html>

@@ -7,14 +7,11 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-    <%@ taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-</head>
+<%@ taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
     <% List<Categorie> allcategorie = (List<Categorie>) request.getAttribute("Allcategorie");%>
 <% Integer idcenter = (Integer) session.getAttribute("idcenteradmin");%>
-<body>
+
 <form method="POST" action="PromotionAccess">
   <div class="relative py-3 sm:max-w-xl sm:mx-auto">
     <div class="relative px-4 py-10 bg-white mx-8 md:mx-0 shadow rounded-3xl sm:p-10">
@@ -78,5 +75,3 @@
     </div>
   </div>
 </form>
-</body>
-</html>
