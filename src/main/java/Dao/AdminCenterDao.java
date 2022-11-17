@@ -1,6 +1,5 @@
 package Dao;
 
-import Models.Admingeneral;
 import Models.Centreadmin;
 import jakarta.persistence.NoResultException;
 
@@ -13,20 +12,6 @@ public class AdminCenterDao extends AbstractHibernateDao<Centreadmin> {
     public AdminCenterDao() {
         tableName = "centreadmin";
         setClazz(Centreadmin.class);
-    }
-
-    public Admingeneral getcenteradminbyEmail(String email) {
-
-        return jpaService.runInTransaction(entityManager -> {
-            try{
-                return entityManager.createQuery("select a from Admingeneral a WHERE a.agemail = :email", Admingeneral.class)
-                        .setParameter("email", email)
-                        .getSingleResult();
-            } catch (NoResultException nre){
-                return null;
-            }
-        });
-
     }
 
     public Integer validateadminGeneralLogin(Object[] login){
@@ -49,10 +34,6 @@ public class AdminCenterDao extends AbstractHibernateDao<Centreadmin> {
         return findAll();
     }
 
-    public Centreadmin getadminGeneralById(long id) {
-        return findOne(id);
-    }
-
     public Centreadmin getadmincenterByEmail(String email) {
         return jpaService.runInTransaction(entityManager -> {
             try{
@@ -68,16 +49,14 @@ public class AdminCenterDao extends AbstractHibernateDao<Centreadmin> {
     public Centreadmin getadmincenterbyid(long id) {
         return findOne(id);
     }
+    // add admin center
     public void addadminCenter(Centreadmin centreadmin){
         create(centreadmin);
     }
-    // delete superAdmin
+    // delete admin center
     public void deleteadminGeneral(Centreadmin centerAdmin) {
         delete(centerAdmin);
     }
-    // delete superAdmin by id
-    public void deleteadminGeneralById(long id) {
-        deleteById(id);
-    }
+
 
 }

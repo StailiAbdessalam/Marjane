@@ -10,10 +10,11 @@ public class CenterDao extends AbstractHibernateDao<Center> {
         setClazz(Center.class);
     }
 
+    // find all center
     public List getAllCenters() {
         return findAll();
     }
-
+    // find center by id
     public Center getCenterById(long id) {
         return findOne(id);
     }
@@ -23,21 +24,8 @@ public class CenterDao extends AbstractHibernateDao<Center> {
             return   entityManager.createQuery("SELECT c FROM Center c WHERE c.id NOT IN (SELECT a.idcenter FROM Centreadmin a)", Center.class).getResultList();
         });
     }
-
-    public Center getpromotionByName(String name) {
-        return jpaService.runInTransaction(entityManager -> {
-            return entityManager.createQuery("select c from Center c WHERE c.cname = :name", Center.class)
-                    .setParameter("name", name)
-                    .getSingleResult();
-        });
-    }
-
     public void createCeter(Center category) {
         create(category);
-    }
-
-    public void deleteCenter(Center category) {
-        delete(category);
     }
 
 }
