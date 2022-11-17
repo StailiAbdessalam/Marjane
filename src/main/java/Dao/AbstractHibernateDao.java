@@ -1,11 +1,7 @@
 package Dao;
 
-import Models.Center;
 import Utuls.JpaService;
-import jakarta.persistence.EntityManager;
-
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -47,8 +43,7 @@ public abstract class AbstractHibernateDao<T extends Serializable> {
 
     public void delete(T entity) {
         jpaService.runInTransaction(entityManager -> {
-            entityManager.detach(entity);
-            entityManager.remove(entity);
+            entityManager.remove(entityManager.merge(entity));
             return null;
         });
     }
@@ -57,28 +52,4 @@ public abstract class AbstractHibernateDao<T extends Serializable> {
         T entity = findOne(entityId);
         delete(entity);
     }
-
-    // validate if the entity is already in the database
-    public boolean validate(T entity) {
-        return jpaService.runInTransaction(entityManager -> {
-            return entityManager.contains(entity);
-        });
-    }
-
-
-    // function that take object of email and password and check by query if the email and password are in the database
-//        public boolean validateLogin(Object[] login) {
-//            String email = (String) login[0];
-//            String password = (String) login[1];
-//            println(tableName);
-//            return jpaService.runInTransaction(entityManager -> {
-//                return entityManager.createQuery(" from " + tableName + " WHERE sa_email = :email and sa_password = :password")
-//                        .setParameter("email", email)
-//                        .setParameter("password", password)
-//                        .getResultList().size() > 0;
-//            });
-//        }
-
-
-
 }
