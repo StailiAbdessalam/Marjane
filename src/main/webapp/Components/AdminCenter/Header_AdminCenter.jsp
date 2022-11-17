@@ -6,12 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body>
+
 <nav class="bg-white px-2 sm:px-4 py-2.5 dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
     <div class="container flex flex-wrap justify-between items-center mx-auto">
         <a href="/" class="flex items-center">
@@ -35,13 +30,8 @@
                 <li>
                     <a href="PromotionAccess" class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Promotion +</a>
                 </li>
-                <li>
-                    <a href="Manager" class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Categorie</a>
-                </li>
             </ul>
         </div>
     </div>
 </nav>
 
-</body>
-</html>
