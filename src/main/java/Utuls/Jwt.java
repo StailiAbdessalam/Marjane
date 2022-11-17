@@ -1,5 +1,4 @@
 package Utuls;
-
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTDecodeException;
@@ -8,14 +7,11 @@ import helpers.Sout;
 import java.util.Date;
 
 public class Jwt{
-
     private static final String SECRET_KEY = "secret";
     private static final String TOKEN_PREFIX = "Bearer";
 
     private static final String HEADER_STRING = "Authorization";
     private static final long EXPIRATION_TIME = 3600000; // 60 minutes
-
-
     public static String generateToken(String email, String role , String fullname) {
         String token = JWT.create()
                 .withSubject(email)
@@ -25,7 +21,6 @@ public class Jwt{
                 .sign(Algorithm.HMAC512(SECRET_KEY.getBytes()));
         return token;
     }
-
     public static boolean isTokenExpired(String token) {
         Boolean isExpired = false;
         Date expiration = null;
