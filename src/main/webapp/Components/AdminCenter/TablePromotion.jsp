@@ -9,15 +9,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
   List< Promotion> allpromotion = (List<Promotion>) request.getAttribute("AllPromotion");
-  int size = allpromotion.size();
 %>
-<html>
-<head>
-  <title>Title</title>
-  <%@ taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-</head>
-<body>
-
+<%@ taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <div class="flex flex-col mt-6">
       <div
               class="py-2 -my-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8"
@@ -46,15 +39,23 @@
               <th
                       class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200"
               >
-                Role <%=size%>
+                Role
 
               </th>
+                <th
+                        class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200"
+                >
+                    Delete
+<%--                    <%=allpromotion%>--%>
+
+                </th>
               <th
                       class="px-6 py-3 bg-gray-100 border-b border-gray-200"
               ></th>
             </tr>
             </thead>
-            <tbody class="bg-white">
+           <% if(allpromotion!=null) { %>
+           <tbody class="bg-white">
             <%for (Promotion promo : allpromotion){%>
             <tr>
               <td
@@ -91,32 +92,31 @@
                   <c:out value="<%=promo.getDatExpire()%>"></c:out>
                 </div>
               </td>
-
               <td
                       class="px-6 py-4 border-b border-gray-200 whitespace-nowrap"
               >
                     <span
-                            class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-yellow-100 rounded-full"
+                            class="status inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-yellow-100 rounded-full"
                     >
                     <c:out value="<%=promo.getPStatus()%>"></c:out>
                     </span
                     >
               </td>
-
               <td
                       class="px-6 py-4 text-sm leading-5 text-gray-500 border-b border-gray-200 whitespace-nowrap"
               >
                 <c:out value="<%=promo.getDescription()%>"></c:out>
               </td>
-
               <td
-                      class="px-6 py-4 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"
-              >
-                <div class="flex justify-around">
+                        class="px-6 py-4 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"
+                >
+                    <div class="flex justify-around">
                       <span class="text-yellow-500 flex justify-center">
 
-                        <form method="POST">
-                          <button class="mx-2 px-2 rounded-md" >
+                       <%if(promo.getPStatus().equals("Pending")){%>
+                         <form action="Promotion" method="POST">
+                          <input type="hidden" name="idpromo" value="<%=promo.getId()%>">
+                          <button type="submit" class="mx-2 px-2 rounded-md" >
                             <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     class="h-5 w-5 text-red-700"
@@ -131,15 +131,33 @@
                             </svg>
                           </button>
                         </form>
+                        <%}%>
                       </span>
-                </div>
-              </td>
+                    </div>
+                </td>
             </tr>
-            <%};%>
+            <%}%>
             </tbody>
+            <%}%>
+
+
+              <% if(allpromotion==null){ %>
+              <tbody class="bg-white">
+              </tbody>
+              <%}%>
           </table>
         </div>
       </div>
     </div>
-</body>
-</html>
+<script>
+    const status = document.querySelectorAll('.status');
+    status.forEach((status) => {
+        if (status.innerText === 'Accepter') {
+            status.classList.add('bg-green-100', 'text-green-700')
+        } else if (status.innerText === 'Pending') {
+            status.classList.add('bg-yellow-100', 'text-yellow-700')
+        } else if (status.innerText === 'Refuser') {
+            status.classList.add('bg-red-100', 'text-red-700')
+        }
+    })
+</script>

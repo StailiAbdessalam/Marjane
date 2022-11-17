@@ -1,7 +1,6 @@
 <%@ page import="Models.Centreadmin" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="java.util.List" %>
-<%@ page import="Models.Manager" %><%--
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: abdessalm staili
   Date: 10/30/2022
@@ -15,7 +14,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-<% List<Manager> AllManager = (ArrayList<Manager>)request.getAttribute("AllManager");%>
+<% List<Centreadmin> Allcenteradmin = (ArrayList<Centreadmin>)request.getAttribute("Allcenteradmin");%>
 
 <div class="overflow-x-auto relative shadow-md sm:rounded-lg mt-[60px]">
   <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -30,21 +29,20 @@
       <th scope="col" class="py-3 px-6">
         Email
       </th>
-        </tr>
+    </tr>
     </thead>
     <tbody>
-    <%for(Manager manager:AllManager){%>
+    <%for(Centreadmin centerAdmin:Allcenteradmin){%>
     <tr class="border-b border-gray-200 dark:border-gray-700">
       <td scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
-        <%=manager.getId()%>
+        <%=centerAdmin.getId()%>
       </td>
       <td class="py-4 px-6">
-        <%=manager.getMfullname()%>
+        <%=centerAdmin.getCafullname()%>
       </td>
       <td class="py-4 px-6 bg-gray-50 dark:bg-gray-800">
-        <%=manager.getMemail()%>
+        <%=centerAdmin.getCaemail()%>
       </td>
-
     </tr>
     <%}%>
     </tbody>
