@@ -19,6 +19,9 @@
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.13.4" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.13.4" />
           <element id="library" level="project" name="Maven: jakarta.persistence:jakarta.persistence-api:3.1.0" />
+          <element id="library" level="project" name="Maven: javax.mail:mail:1.5.0-b01" />
+          <element id="library" level="project" name="Maven: javax.activation:activation:1.1" />
+          <element id="library" level="project" name="Maven: com.sun.mail:javax.mail:1.6.2" />
           <element id="library" level="project" name="Maven: org.postgresql:postgresql:42.5.0" />
           <element id="library" level="project" name="Maven: org.checkerframework:checker-qual:3.5.0" />
           <element id="library" level="project" name="Maven: org.hibernate.orm:hibernate-core:6.0.0.Final" />
